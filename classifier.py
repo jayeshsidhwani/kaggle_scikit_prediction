@@ -5,6 +5,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split
 from sklearn.svm import SVC
 
+
+class Classifiers():
+    def svm_classifier(self):
+        return SVC(probability=True, gamma=0.03)
+
 class Estimator:
 
     def __init__(self):
@@ -48,11 +53,6 @@ class Estimator:
         train_data, test_data, train_target, test_target = train_test_split(self.train_data, self.train_target, test_size=0.4, random_state=0)
         self.classify("svm_classifier", train_data, train_target)
         print self.classifier.score(test_data, test_target)
-
-class Classifiers():
-    def svm_classifier(self):
-        return SVC(probability=True, gamma=0.03)
-
 
 if __name__ == '__main__':
     svm_estimator = Estimator().classify('svm_classifier')
